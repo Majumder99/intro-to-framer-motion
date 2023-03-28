@@ -1,14 +1,47 @@
 import React from "react";
+import { motion } from "framer-motion";
+const parentChild = {
+  hidden: {
+    x: "100vw",
+  },
+  visible: {
+    x: 0,
+    transition: {
+      type: "spring",
+      when: "beforeChildren",
+      mass: 0.4,
+      staggerChildren: 0.8,
+    },
+  },
+};
+const childComponent = {
+  hidden: {
+    x: "-100vw",
+  },
+  visible: {
+    x: 0,
+    delay: 2,
+  },
+};
 
 const Order = ({ pizza }) => {
   return (
-    <div className="container order">
+    <motion.div
+      className="container order"
+      variants={parentChild}
+      initial="hidden"
+      animate="visible"
+    >
       <h2>Thank you for your order :)</h2>
-      <p>You ordered a {pizza.base} pizza with:</p>
+      <motion.p variants={childComponent}>
+        You ordered a {pizza.base} pizza with:
+      </motion.p>
       {pizza.toppings.map((topping) => (
-        <div key={topping}>{topping}</div>
+        <motion.div variants={childComponent} key={topping}>
+          {topping}
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 };
 
