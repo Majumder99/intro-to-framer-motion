@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import Loader from "./Loader";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
           <button>Create Your Pizza</button>
         </Link>
       </motion.div>
+      <Loader />
     </motion.div>
   );
 };

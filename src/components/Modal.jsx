@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 const backdrop = {
-  visible: { opacity: 1 },
   hidden: { opacity: 0 },
+  visible: { opacity: 1 },
 };
 
 const modal = {
@@ -16,21 +16,21 @@ const modal = {
   },
 };
 
-const Modal = ({ showModal }) => {
+const Modal = ({ showModal, setShowModal }) => {
   return (
-    <AnimatePresence>
+    //   if we wanna exit some thing from dom we will use animatepresence means clear the component
+    <AnimatePresence mode="wait">
       {showModal && (
         <motion.div
           className="backdrop"
-          variants={backdrop}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
         >
-          <motion.div className="modal" variants={modal}>
+          <motion.div className="modal">
             <p>Want to make another Pizza?</p>
             <Link to="/">
-              <button>Start Again</button>
+              <button onClick={() => setShowModal(false)}>Start Again</button>
             </Link>
           </motion.div>
         </motion.div>

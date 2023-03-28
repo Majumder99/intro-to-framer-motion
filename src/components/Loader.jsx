@@ -7,11 +7,11 @@ const loaderVariants = {
     y: [0, -30],
     transition: {
       x: {
-        yoyo: Infinity,
+        repeat: Infinity,
         duration: 0.5,
       },
       y: {
-        yoyo: Infinity,
+        repeat: Infinity,
         duration: 0.25,
         ease: "easeOut",
       },
@@ -22,7 +22,7 @@ const loaderVariants = {
     x: 0,
     transition: {
       y: {
-        yoyo: Infinity,
+        repeat: Infinity,
         duration: 0.25,
         ease: "easeOut",
       },
@@ -31,6 +31,7 @@ const loaderVariants = {
 };
 
 const Loader = () => {
+  // animation is the variable and cycleanimation is the function which will switch the animation
   const [animation, cycleAnimation] = useCycle("animationOne", "animationTwo");
 
   return (
